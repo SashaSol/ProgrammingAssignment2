@@ -1,8 +1,15 @@
 ## The functions below get input matrix and calculate it's inverse matrix
-##  assuming input matrix quadraticis and not singular.  If inverse matrix is
+##  assuming input matrix square and non-singular.  If inverse matrix is
 ## alredy calculated it uses this value and does not recalculate it
 
-## Getting inverse matrix
+
+## Input for makeCacheMatrix is a matrix
+## 4 functions are defined in makeCacheMatrix
+## get - returns matrix
+## set - sets matrix
+## getinverse - returns inverse matrix
+## setinverse - sets inverse matrix
+
 
 makeCacheMatrix <- function(x = matrix()) {
   
@@ -19,10 +26,12 @@ makeCacheMatrix <- function(x = matrix()) {
        getinverse = getinverse)
 }
 
-## Check if inverse matrix exists return it, else get inverse of 'x'
+## Return a matrix that is the inverse of 'x'
+## Input is the list returned by makeCacheMatrix function
+## Check if inverse matrix exists return it, else calulate it using solve function
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+        
   m <- x$getinverse()
   if(!is.null(m)) {
     message("getting cached data")
